@@ -84,7 +84,7 @@ var qz = (function() {
 
             /** Default parameters used on new connections. Override values using options parameter on {@link qz.websocket.connect}. */
             connectConfig: {
-                host: ["localhost", "localhost.qz.io"], //hosts QZ Tray can be running on
+                host: ["localhost", "localhost.labelific.com"], //hosts QZ Tray can be running on
                 hostIndex: 0,                           //internal var - index on host array
                 usingSecure: true,                      //boolean use of secure protocol
                 usingSurf: true,                        //append suffix to non-qualified hostnames
@@ -1225,7 +1225,7 @@ var qz = (function() {
              * Call to setup connection with QZ Tray on user's system.
              *
              * @param {Object} [options] Configuration options for the web socket connection.
-             *  @param {string|Array<string>} [options.host=['localhost', 'localhost.qz.io']] Host running the QZ Tray software.
+             *  @param {string|Array<string>} [options.host=['localhost', 'localhost.labelific.com']] Host running the QZ Tray software.
              *  @param {Object} [options.port] Config options for ports to cycle.
              *   @param {Array<number>} [options.port.secure=[8181, 8282, 8383, 8484]] Array of secure (WSS) ports to try
              *   @param {Array<number>} [options.port.insecure=[8182, 8283, 8384, 8485]] Array of insecure (WS) ports to try
