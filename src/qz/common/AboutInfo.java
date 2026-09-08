@@ -187,7 +187,8 @@ public class AboutInfo {
             JSONArray versions = new JSONArray(rawJson.toString());
             for(int i = 0; i < versions.length(); i++) {
                 JSONObject versionData = versions.getJSONObject(i);
-                if(versionData.getString("target_commitish").equals("master")) {
+                String branch = versionData.getString("target_commitish");
+                if(branch.equals("labelific") || branch.equals("master")) {
                     Version latestVersion = Version.valueOf(versionData.getString("name"));
                     log.trace("Found latest version of {} online: {}", Constants.ABOUT_TITLE, latestVersion);
                     return latestVersion;
