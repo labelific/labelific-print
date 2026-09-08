@@ -2,10 +2,10 @@
 
 /**
  * @version 2.2.6
- * @overview QZ Tray Connector
+ * @overview Labelific Print Connector (fork of QZ Tray)
  * @license LGPL-2.1-only
  * <p/>
- * Connects a web client to the QZ Tray software.
+ * Connects a web client to the Labelific Print software.
  * Enables printing and device communication from javascript.
  */
 var qz = (function() {
@@ -2972,3 +2972,10 @@ var qz = (function() {
         self.qz = qz;
     }
 })();
+
+
+// Labelific alias — modern name for the same object. Older sample pages
+// still reference `window.qz`; keep both until we phase them out.
+if (typeof window === 'object') {
+    window.labelificPrint = window.qz;
+}

@@ -1,23 +1,44 @@
-QZ Tray
-========
+# Labelific Print
 
- [![Build Status](https://github.com/qzind/tray/actions/workflows/build.yaml/badge.svg)](../../actions) [![Downloads](https://img.shields.io/github/downloads/qzind/tray/latest/total.svg)](../../releases) [![Issues](https://img.shields.io/github/issues/qzind/tray.svg)](../../issues) [![Commits](https://img.shields.io/github/commit-activity/m/qzind/tray.svg)](../../commits)
+Local print bridge for the [Labelific](https://labelific.com) label
+workflow. Sits on the customer's PC (or on our Pi kiosk appliance),
+accepts print jobs from any Labelific web app over a local
+HTTPS/WebSocket loopback, and hands them to the physically attached
+printer without an OS dialog.
 
-Browser plugin for sending documents and raw commands to a printer or attached device
+## Fork status
 
-## Getting Started
-  * Download here https://qz.io/download/
-  * See our [Getting Started](../../wiki/getting-started) guide.
-  * Visit our home page https://qz.io.
-  
-## Support
-  * File a bug via our [issue tracker](../../issues)
-  * Ask the community via our [community support page](https://qz.io/support/)
-  * Ask the developers via [premium support](https://qz.io/contact/) (fees may apply)
+This is a fork of [QZ Tray](https://github.com/qzind/tray) (LGPL-2.1).
+Upstream `qzind/tray` is tracked as the `upstream` remote and merged
+regularly. All Labelific customizations live on the `labelific` branch:
 
-## Changelog
-  * See our [most recent releases](../../releases)
+- Labelific branding (name, icons, About dialog, installer strings,
+  Windows service name, macOS bundle id)
+- Trust model swap — Labelific's CA public cert is baked in at build
+  time; our web apps' server-signed print requests validate silently
+  against it, no user dialog
+- Auto-update channel repointed at Labelific's release feed
 
-## Java Developer Resources
-  * [Install dependencies](../../wiki/install-dependencies)
-  * [Compile, Package](../../wiki/compiling)
+`main` mirrors upstream so `git merge upstream/main` stays trivial.
+See [.github/labelific-notes.md](.github/labelific-notes.md) for the
+branch strategy and how upstream releases get picked up.
+
+## License
+
+LGPL-2.1, inherited from QZ Tray. See [LICENSE.txt](LICENSE.txt) for
+the full text. QZ Industries' copyright notices in individual files
+are preserved; Labelific's modifications are additionally
+Copyright © Labelific.
+
+## Original QZ Tray docs
+
+For build instructions, JS SDK usage, and platform-specific notes,
+QZ's own documentation still applies (only the identity strings
+change under Labelific):
+
+- [Getting Started](https://github.com/qzind/tray/wiki/getting-started)
+- [Compiling](https://github.com/qzind/tray/wiki/compiling)
+- [Install dependencies](https://github.com/qzind/tray/wiki/install-dependencies)
+
+The upstream README lives at
+[github.com/qzind/tray](https://github.com/qzind/tray/blob/master/README.md).

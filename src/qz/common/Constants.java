@@ -9,6 +9,13 @@ import static qz.ws.SingleInstanceChecker.STEAL_WEBSOCKET_PROPERTY;
 
 /**
  * Created by robert on 7/9/2014.
+ *
+ * Rebranded strings for the Labelific Print fork live here. The Java
+ * package stays `qz.*` on purpose — renaming it would make every
+ * upstream merge from qzind/tray a fight. All user-visible identity is
+ * driven by the ABOUT_* + PROBE_* + PROPS_FILE + DATA_DIR constants
+ * below, plus the strings in ant/project.properties and the platform
+ * installer templates under ant/{apple,linux,windows}/.
  */
 public class Constants {
     public static final String HEXES = "0123456789ABCDEF";
@@ -18,37 +25,44 @@ public class Constants {
     public static final Version JAVA_VERSION = SystemUtilities.getJavaVersion();
     public static final String JAVA_VENDOR = System.getProperty("java.vendor");
 
-    /* QZ-Tray Constants */
+    /* Labelific Print constants (rebrand of QZ Tray, LGPL-2.1) */
     public static final String BLOCK_FILE = "blocked";
     public static final String ALLOW_FILE = "allowed";
     public static final String TEMP_FILE = "temp";
     public static final String LOG_FILE = "debug";
-    public static final String PROPS_FILE = "qz-tray"; // .properties extension is assumed
+    public static final String PROPS_FILE = "labelific-print"; // .properties extension is assumed
     public static final String PREFS_FILE = "prefs"; // .properties extension is assumed
     public static final String[] PERSIST_PROPS = {"file.whitelist", "file.allow", "networking.hostname", "networking.port", STEAL_WEBSOCKET_PROPERTY };
     public static final String AUTOSTART_FILE = ".autostart";
-    public static final String DATA_DIR = "qz";
+    public static final String DATA_DIR = "labelific";
 
     public static final int BORDER_PADDING = 10;
 
-    public static final String ABOUT_TITLE = "QZ Tray";
-    public static final String ABOUT_EMAIL = "support@qz.io";
-    public static final String ABOUT_URL = "https://qz.io";
-    public static final String ABOUT_COMPANY = "QZ Industries, LLC";
-    public static final String ABOUT_CITY = "Canastota";
-    public static final String ABOUT_STATE = "NY";
-    public static final String ABOUT_COUNTRY = "US";
+    public static final String ABOUT_TITLE = "Labelific Print";
+    public static final String ABOUT_EMAIL = "support@labelific.com";
+    public static final String ABOUT_URL = "https://labelific.com";
+    public static final String ABOUT_COMPANY = "Labelific";
+    public static final String ABOUT_CITY = "Prague";
+    public static final String ABOUT_STATE = "";
+    public static final String ABOUT_COUNTRY = "CZ";
 
     public static final String ABOUT_LICENSING_URL = Constants.ABOUT_URL + "/licensing";
     public static final String ABOUT_SUPPORT_URL = Constants.ABOUT_URL + "/support";
     public static final String ABOUT_PRIVACY_URL = Constants.ABOUT_URL + "/privacy";
     public static final String ABOUT_DOWNLOAD_URL = Constants.ABOUT_URL + "/download";
 
-    public static final String VERSION_CHECK_URL = "https://api.github.com/repos/qzind/tray/releases";
-    public static final String VERSION_DOWNLOAD_URL = "https://github.com/qzind/tray/releases";
+    // Auto-update source. GitHub Releases API for the fork today; will be
+    // repointed at the Cloudflare R2 versions.json feed once that lands
+    // (see docs/AUTO-UPDATE.md).
+    public static final String VERSION_CHECK_URL = "https://api.github.com/repos/labelific/labelific-print/releases";
+    public static final String VERSION_DOWNLOAD_URL = "https://github.com/labelific/labelific-print/releases";
     public static final boolean ENABLE_DIAGNOSTICS = true; // Diagnostics menu (logs, etc)
 
-    public static final String BRAND_COLOR_HEX = "#44aa53";
+    public static final String BRAND_COLOR_HEX = "#0d6efd";
+    // IS_REBRANDED flips true because ABOUT_EMAIL no longer matches QZ's.
+    // Downstream code branches on it to hide QZ-specific menu items,
+    // sponsorship text, and similar. Do NOT invert this by hand — just
+    // change ABOUT_EMAIL and the flag follows.
     @SuppressWarnings("ConstantValue")
     public static final boolean IS_REBRANDED = !ABOUT_EMAIL.equals("support@qz.io");
 
